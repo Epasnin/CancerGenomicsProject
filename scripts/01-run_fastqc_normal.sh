@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=fastqc
+#SBATCH --job-name=fastqc_normal
 #SBATCH --partition=pibu_el8
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
@@ -10,7 +10,7 @@
 #SBATCH --output=/data/users/epasnin/CancerGenomicsProject/logs/output_fastqc_%j.o
 #SBATCH --error=/data/users/epasnin/CancerGenomicsProject/logs/error_fastqc_%j.e
 
-WORKDIR="/data/courses/cancergenomics/VAR_CALLING/fastq"
+WORKDIR="/data/users/epasnin/CancerGenomicsProject/raw_data"
 OUTDIR="/data/users/epasnin/CancerGenomicsProject/fastqc"
 CONTAINER="/containers/apptainer/fastqc-0.12.1.sif"
 
@@ -22,4 +22,4 @@ apptainer exec \
     fastqc \
     --threads 1 \
     --outdir "$OUTDIR" \
-    "$WORKDIR"/*.gz
+    "$WORKDIR"/normal.*.gz
