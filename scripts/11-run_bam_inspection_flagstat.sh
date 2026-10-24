@@ -1,17 +1,16 @@
 #!/bin/bash
 #SBATCH --job-name=bam_inspection
-#SBATCH --partition=pibu_el8
+#SBATCH --partition=pshort_el8
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
 #SBATCH --time=01:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --output=/data/users/vkiran/cancer_genomics/logs/output_bam_inspection_%j.o
-#SBATCH --error=/data/users/vkiran/cancer_genomics/logs/error_bam_inspection_%j.e
+#SBATCH --output=/data/users/%u/CancerGenomicsProject/logs/FLAGST/output_bam_inspection_%j.o
+#SBATCH --error=/data/users/%u/CancerGenomicsProject/logs/FLAGST/error_bam_inspection_%j.e
 
 BAM_DIR=/data/courses/cancergenomics/VAR_CALLING/alignments
-OUTDIR=/data/users/vkiran/cancer_genomics/bam_inspection
+OUTDIR=/data/users/${USER}/CancerGenomicsProject/output/bam_inspection
 CONTAINER=/containers/apptainer/samtools-1.19.sif
 
 mkdir -p "$OUTDIR"

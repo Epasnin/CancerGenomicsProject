@@ -6,17 +6,16 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=04:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --output=/data/users/pkunjal/cancer_genomics/logs/output_baserecal_%j.o
-#SBATCH --error=/data/users/pkunjal/cancer_genomics/logs/error_baserecal_%j.e
+#SBATCH --output=/data/users/%u/CancerGenomicsProject/logs/BaseRE/output_baserecal_%j.o
+#SBATCH --error=/data/users/%u/CancerGenomicsProject/logs/BaseRE/error_baserecal_%j.e
 
 set -euo pipefail
 
 module load GATK/4.2.6.1-GCCcore-10.3.0-Java-11
 
-PROJECTDIR="/data/users/pkunjal/cancer_genomics"
+PROJECTDIR="/data/users/${USER}/CancerGenomicsProject/output"
 MARKEDBAMDIR="$PROJECTDIR/alignments/marked"
-OUTDIR="$PROJECTDIR/results/alignments/bqsr_tables"
+OUTDIR="$PROJECTDIR/alignments/bqsr_tables"
 
 REF="/data/courses/cancergenomics/VAR_CALLING/bwa_idx/genome.fa"
 KNOWN_DBSNP="/data/courses/cancergenomics/VAR_CALLING/dbsnp/GCF_000001405.40_alias.vcf.gz"

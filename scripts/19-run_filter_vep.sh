@@ -1,21 +1,20 @@
 #!/bin/bash
 #SBATCH --job-name=filter_vep
-#SBATCH --partition=pibu_el8
+#SBATCH --partition=pshort_el8
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=8G
 #SBATCH --time=02:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --output=/data/users/epasnin/CancerGenomicsProject/logs/output_filter_vep_%j.o
-#SBATCH --error=/data/users/epasnin/CancerGenomicsProject/logs/error_filter_vep_%j.e
+#SBATCH --output=/data/users/%u/CancerGenomicsProject/logs/vep_filter/output_filter_vep_%j.o
+#SBATCH --error=/data/users/%u/CancerGenomicsProject/logs/vep_filter/error_filter_vep_%j.e
 
 set -euo pipefail
 
-PROJECTDIR="/data/users/epasnin/CancerGenomicsProject"
+PROJECTDIR="/data/users/${USER}/CancerGenomicsProject"
 VEP_CONTAINER="/data/users/vkiran/containers/vep_112.sif"
-INPUT="/data/users/pkunjal/cancer_genomics/results/vep_mutect2/chr6ch17_mutect2_annotated.txt"
-OUTDIR="$PROJECTDIR/results/annotation"
+INPUT="/data/users/${USER}/CancerGenomicsProject/output/vep_mutect2/chr6ch17_mutect2_annotated.txt"
+OUTDIR="$PROJECTDIR/output/annotation"
 OUTPUT="$OUTDIR/vep_filtered.txt"
 
 mkdir -p "$OUTDIR"

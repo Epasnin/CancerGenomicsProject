@@ -1,13 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=pull_vep
-#SBATCH --partition=pibu_el8
+#SBATCH --partition=pshort_el8
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=8G
 #SBATCH --time=01:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --reservation=class-407009-2026-10-15
 #SBATCH --output=/data/users/vkiran/cancer_genomics/logs/output_pull_vep_%j.o
 #SBATCH --error=/data/users/vkiran/cancer_genomics/logs/error_pull_vep_%j.e
 

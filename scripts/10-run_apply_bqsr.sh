@@ -6,19 +6,18 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 #SBATCH --time=04:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --output=/data/users/pkunjal/cancer_genomics/logs/output_applybqsr_%j.o
-#SBATCH --error=/data/users/pkunjal/cancer_genomics/logs/error_applybqsr_%j.e
+#SBATCH --output=/data/users/%u/CancerGenomicsProject/logs/BQSR/output_applybqsr_%j.o
+#SBATCH --error=/data/users/%u/CancerGenomicsProject/logs/BQSR/error_applybqsr_%j.e
 
 set -euo pipefail
 
 module load GATK/4.2.6.1-GCCcore-10.3.0-Java-11
 module load SAMtools   
 
-PROJECTDIR="/data/users/pkunjal/cancer_genomics"
+PROJECTDIR="/data/users/${USER}/CancerGenomicsProject/output"
 MARKEDBAMDIR="$PROJECTDIR/alignments/marked"
-TABLEDIR="$PROJECTDIR/results/alignments/bqsr_tables"
-OUTDIR="$PROJECTDIR/results/alignments/recal"
+TABLEDIR="$PROJECTDIR/alignments/bqsr_tables"
+OUTDIR="$PROJECTDIR/alignments/recal"
 
 REF="/data/courses/cancergenomics/VAR_CALLING/bwa_idx/genome.fa"
 

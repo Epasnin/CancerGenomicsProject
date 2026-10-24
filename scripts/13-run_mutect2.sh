@@ -1,23 +1,23 @@
 #!/bin/bash
 #SBATCH --job-name=mutect2
-#SBATCH --partition=pibu_el8
+#SBATCH --partition=pshort_el8
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --mem=32G
 #SBATCH --time=02:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --reservation=class-407009-2026-10-15
-#SBATCH --output=/data/users/epasnin/CancerGenomicsProject/logs/mutect2_%j.out
-#SBATCH --error=/data/users/epasnin/CancerGenomicsProject/logs/mutect2_%j.err
+#SBATCH --output=/data/users/%u/CancerGenomicsProject/logs/Mutect2/mutect2_%j.out
+#SBATCH --error=/data/users/%u/CancerGenomicsProject/logs/Mutect2/mutect2_%j.err
 
 set -euo pipefail
 
 module load GATK/4.2.6.1-GCCcore-10.3.0-Java-11
 
-ALIGNDIR=/data/users/pkunjal/cancer_genomics/results/alignments/recal
+ALIGNDIR=/data/users/${USER}/CancerGenomicsProject/output/alignments/recal
+OUTDIR=/data/users/${USER}/CancerGenomicsProject/output/variants
+
+
 REFDIR=/data/courses/cancergenomics/VAR_CALLING/reference
 RESOURCEDIR=/data/courses/cancergenomics/VAR_CALLING/resources
-OUTDIR=/data/users/epasnin/CancerGenomicsProject/results/variants
 
 mkdir -p $OUTDIR
 

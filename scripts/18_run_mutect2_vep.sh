@@ -1,20 +1,19 @@
 #!/bin/bash
 #SBATCH --job-name=vep_mutect2
-#SBATCH --partition=pibu_el8
+#SBATCH --partition=pshort_el8
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=02:00:00
-#SBATCH --account=class-407009-ws-2026
-#SBATCH --output=/data/users/pkunjal/cancer_genomics/logs/output_vep_mutect2_%j.o
-#SBATCH --error=/data/users/pkunjal/cancer_genomics/logs/error_vep_mutect2_%j.e
+#SBATCH --output=/data/users/%u/CancerGenomicsProject/logs/vep_mutect2/output_vep_mutect2_%j.o
+#SBATCH --error=/data/users/%u/CancerGenomicsProject/logs/vep_mutect2/error_vep_mutect2_%j.e
 
 set -euo pipefail
 
-PROJECTDIR="/data/users/pkunjal/cancer_genomics"
-OUTDIR="$PROJECTDIR/results/vep_mutect2"
-INPUT_VCF="/data/users/epasnin/CancerGenomicsProject/results/variants/somatic.filtered.PASS.vcf.gz"
+PROJECTDIR="/data/users/${USER}/CancerGenomicsProject"
+OUTDIR="$PROJECTDIR/output/vep_mutect2"
+INPUT_VCF="/data/users/${USER}/CancerGenomicsProject/output/variants/somatic.filtered.PASS.vcf.gz"
 
 CONTAINER="/data/users/vkiran/containers/vep_112.sif"
 CACHE="/data/databases/vep"
